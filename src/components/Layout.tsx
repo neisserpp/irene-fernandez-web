@@ -44,7 +44,7 @@ function Header() {
             solid ? 'text-night-900' : 'text-bone-100'
           }`}
         >
-          Irene Fernández
+          Irene Fernández Prados
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex">
@@ -125,7 +125,7 @@ function Footer() {
       <Container>
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
-            <p className="font-display text-2xl text-bone-100">Irene Fernández</p>
+            <p className="font-display text-2xl text-bone-100"> Fernández</p>
             <p className="mt-4 max-w-sm text-sm leading-relaxed">{site.credential}</p>
             <a
               href={`mailto:${site.email}`}
@@ -169,7 +169,7 @@ function Footer() {
         </div>
 
         <div className="mt-16 flex flex-col gap-4 border-t border-white/10 pt-8 text-xs md:flex-row md:items-center md:justify-between">
-          <p>© {new Date().getFullYear()} Irene Fernández. Todos los derechos reservados.</p>
+          <p>© {new Date().getFullYear()} Irene Fernández Prados. Todos los derechos reservados.</p>
           <div className="flex flex-wrap gap-6">
             <a href={site.linkedin} target="_blank" rel="noreferrer" className="hover:text-bone-100">
               LinkedIn
