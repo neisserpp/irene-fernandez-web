@@ -11,10 +11,7 @@ export const site = {
   credential:
     'CEO de EssensUp, ingeniera informática y ejecutiva con más de 17 años de experiencia en transformación digital y SAP.',
   email: 'Irene.fernandez@essensup.com',
-  linkedin: 'https://https://www.linkedin.com/in/irenefernandezprados?utm_source=share_via&utm_content=profile&utm_medium=member_android/',
-
-
-
+  linkedin: 'https://www.linkedin.com/in/irenefernandezprados?utm_source=share_via&utm_content=profile&utm_medium=member_android/',
   essensup: 'https://www.essensup.com',
   newsletter: {
     name: 'Notas estratégicas sobre transformación SAP',
