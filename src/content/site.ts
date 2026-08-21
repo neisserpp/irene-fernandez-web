@@ -10,7 +10,7 @@ export const site = {
     'Irene Fernández ayuda a las empresas a transformar tecnología, organizaciones y talento para convertir el cambio en resultados reales.',
   credential:
     'CEO de EssensUp, ingeniera informática y ejecutiva con más de 17 años de experiencia en transformación digital y SAP.',
-  email: 'hola@irenefernandez.com',
+  email: 'Irene.fernandez@essensup.com',
   linkedin: 'https://www.linkedin.com/',
   essensup: 'https://www.essensup.com',
   newsletter: {
