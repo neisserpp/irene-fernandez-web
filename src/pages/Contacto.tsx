@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react'
+import Reveal from '../components/Reveal'
+import ImageFrame from '../components/ImageFrame'
+import { imageSlots } from '../content/images'
 import { useSearchParams } from 'react-router-dom'
 import { ArrowRight, Container, Eyebrow, Section } from '../components/ui'
 import { contactReasons, site } from '../content/site'
@@ -42,9 +45,11 @@ export default function Contacto() {
 
   return (
     <>
-      <header className="bg-night-900 pt-32 pb-20 text-bone-100 md:pt-40 md:pb-24">
-        <Container>
-          <div className="max-w-3xl">
+      <header className="grain relative overflow-hidden bg-night-900 pt-32 pb-20 text-bone-100 md:pt-40 md:pb-24 lg:pt-44">
+        <div aria-hidden className="absolute right-0 top-0 h-full w-1/3 border-l border-white/10" />
+        <Container className="relative">
+          <Reveal direction="left">
+          <div className="max-w-4xl">
             <Eyebrow tone="bone">Hablemos</Eyebrow>
             <h1 className="mt-6 text-4xl leading-[1.1] md:text-6xl md:leading-[1.05]">
               Empecemos por el motivo. Así llega a la persona adecuada.
@@ -61,13 +66,14 @@ export default function Contacto() {
               .
             </p>
           </div>
+          </Reveal>
         </Container>
       </header>
 
       <Section>
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-7">
-            <p className="eyebrow text-petrol-600">Paso 1 · Motivo del contacto</p>
+            <Reveal><p className="eyebrow text-petrol-600">Paso 1 · Motivo del contacto</p>
             <div className="mt-6 space-y-px bg-bone-200">
               {contactReasons.map((option) => {
                 const active = reason === option.id
@@ -96,10 +102,10 @@ export default function Contacto() {
                   </button>
                 )
               })}
-            </div>
+            </div></Reveal>
 
             {reason ? (
-              <form
+              <Reveal direction="up"><form
                 className="mt-12 border-t border-bone-200 pt-10"
                 onSubmit={(e) => {
                   e.preventDefault()
@@ -152,7 +158,7 @@ export default function Contacto() {
                     respuesta con una propuesta de conversación.
                   </p>
                 ) : null}
-              </form>
+              </form></Reveal>
             ) : (
               <p className="mt-10 text-sm text-ink-500">
                 Elige un motivo para continuar. Cada opción dirige la oportunidad a la
@@ -162,7 +168,10 @@ export default function Contacto() {
           </div>
 
           <aside className="lg:col-span-5">
-            <div className="bg-bone-100 p-8 md:p-10">
+            <Reveal direction="right">
+              <ImageFrame slot={imageSlots.portrait} aspect="portrait" className="mb-8 max-h-[520px]" />
+            </Reveal>
+            <div className="magnetic-card bg-bone-100 p-8 md:p-10">
               <p className="eyebrow text-terra-600">Cómo se gestiona</p>
               <ul className="mt-6 divide-y divide-bone-300 border-t border-bone-300">
                 {contactReasons.map((option) => (

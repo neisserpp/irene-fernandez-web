@@ -31,20 +31,16 @@ function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         solid
-          ? 'border-b border-bone-200 bg-bone-50/95 backdrop-blur-md'
-          : 'border-b border-transparent'
+          ? 'border-b border-bone-200 bg-bone-50/94 shadow-[0_8px_30px_rgba(10,20,32,0.05)] backdrop-blur-xl'
+          : 'border-b border-transparent bg-night-900/10'
       }`}
     >
       <Container className="flex h-20 items-center justify-between">
-        <Link
-          to="/"
-          className={`font-display text-lg tracking-tight md:text-xl ${
-            solid ? 'text-night-900' : 'text-bone-100'
-          }`}
-        >
-          Irene Fernández Prados
+        <Link to="/" className={`group flex items-center gap-3 ${solid ? 'text-night-900' : 'text-bone-100'}`}>
+          <span className={`grid h-9 w-9 place-items-center border text-xs font-bold tracking-[0.08em] transition-colors ${solid ? 'border-terra-600 text-terra-600 group-hover:bg-terra-600 group-hover:text-bone-50' : 'border-bone-100/50 text-bone-100 group-hover:border-terra-500 group-hover:text-terra-500'}`}>IF</span>
+          <span className="hidden font-display text-lg tracking-tight sm:block md:text-xl">Irene Fernández</span>
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex">
@@ -82,7 +78,7 @@ function Header() {
           type="button"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
-          aria-label="Abrir menú"
+          aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
           className={`lg:hidden ${solid ? 'text-night-900' : 'text-bone-100'}`}
         >
           <span className="eyebrow">{open ? 'Cerrar' : 'Menú'}</span>
@@ -98,8 +94,8 @@ function Header() {
                 to={item.to}
                 end={item.to === '/'}
                 className={({ isActive }) =>
-                  `border-b border-bone-200 py-3.5 font-display text-2xl ${
-                    isActive ? 'text-petrol-600' : 'text-night-900'
+                  `border-b border-bone-200 py-3.5 font-display text-2xl transition-colors ${
+                    isActive ? 'text-terra-600' : 'text-night-900 hover:text-petrol-600'
                   }`
                 }
               >
@@ -108,7 +104,7 @@ function Header() {
             ))}
             <Link
               to="/contacto"
-              className="mt-4 inline-flex items-center justify-center gap-2 bg-night-900 px-5 py-4 text-xs font-bold tracking-[0.14em] text-bone-50 uppercase"
+              className="group mt-4 inline-flex items-center justify-center gap-2 bg-night-900 px-5 py-4 text-xs font-bold tracking-[0.14em] text-bone-50 uppercase transition-colors hover:bg-terra-600"
             >
               Hablemos <ArrowRight />
             </Link>
@@ -125,7 +121,10 @@ function Footer() {
       <Container>
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
-            <p className="font-display text-2xl text-bone-100"> Fernández</p>
+            <div className="flex items-center gap-3">
+              <span className="grid h-10 w-10 place-items-center border border-terra-600 text-xs font-bold tracking-[0.08em] text-terra-500">IF</span>
+              <p className="font-display text-2xl text-bone-100">Irene Fernández</p>
+            </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed">{site.credential}</p>
             <a
               href={`mailto:${site.email}`}
@@ -169,7 +168,7 @@ function Footer() {
         </div>
 
         <div className="mt-16 flex flex-col gap-4 border-t border-white/10 pt-8 text-xs md:flex-row md:items-center md:justify-between">
-          <p>© {new Date().getFullYear()} Irene Fernández Prados. Todos los derechos reservados.</p>
+          <p>© {new Date().getFullYear()} Irene Fernández. Todos los derechos reservados.</p>
           <div className="flex flex-wrap gap-6">
             <a href={site.linkedin} target="_blank" rel="noreferrer" className="hover:text-bone-100">
               LinkedIn

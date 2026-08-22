@@ -1,4 +1,7 @@
 import { useMemo, useState } from 'react'
+import Reveal from '../components/Reveal'
+import ImageFrame from '../components/ImageFrame'
+import { imageSlots } from '../content/images'
 import {
   ArrowRight,
   PageHeader,
@@ -52,7 +55,7 @@ export default function Ideas() {
                 {featured.format} · {featured.readingTime}
               </p>
             </div>
-            <div className="lg:col-span-9">
+            <div className="lg:col-span-5">
               <h2 className="text-3xl leading-tight md:text-[2.75rem] md:leading-[1.12]">
                 {featured.title}
               </h2>
@@ -66,6 +69,9 @@ export default function Ideas() {
                 Leer la pieza <ArrowRight />
               </button>
             </div>
+            <div className="lg:col-span-4">
+              <ImageFrame slot={imageSlots.detail} aspect="landscape" />
+            </div>
           </article>
         </Section>
       ) : null}
@@ -78,13 +84,15 @@ export default function Ideas() {
         />
 
         <div className="mt-12 grid gap-px bg-bone-300 md:grid-cols-3">
-          {formats.map((f) => (
-            <div key={f.name} className="bg-bone-100 p-8">
+          {formats.map((f, i) => (
+            <Reveal key={f.name} delay={i * 60}>
+              <div className="magnetic-card h-full bg-bone-100 p-8">
               <h3 className="font-display text-xl">{f.name}</h3>
               <p className="mt-3 text-sm leading-relaxed text-ink-700">
                 {f.description}
               </p>
-            </div>
+              </div>
+            </Reveal>
           ))}
         </div>
 
@@ -104,8 +112,9 @@ export default function Ideas() {
         </div>
 
         <ul className="mt-12 divide-y divide-bone-300 border-t border-bone-300">
-          {filtered.map((idea) => (
-            <li key={idea.title} className="group py-8">
+          {filtered.map((idea, i) => (
+            <Reveal key={idea.title} delay={i * 35}>
+              <li className="group py-8">
               <div className="grid gap-4 lg:grid-cols-12">
                 <div className="lg:col-span-3">
                   <p className="eyebrow text-petrol-600">{idea.format}</p>
@@ -122,7 +131,8 @@ export default function Ideas() {
                   </p>
                 </div>
               </div>
-            </li>
+              </li>
+            </Reveal>
           ))}
         </ul>
 

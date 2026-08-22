@@ -1,3 +1,6 @@
+import Reveal from '../components/Reveal'
+import ImageFrame from '../components/ImageFrame'
+import { imageSlots } from '../content/images'
 import {
   ArrowRight,
   ButtonLink,
@@ -20,12 +23,14 @@ export default function Vision() {
       <Section tone="bone">
         <div className="grid gap-10 md:grid-cols-3">
           {manifesto.map((line, i) => (
-            <div key={line} className="border-t border-bone-300 pt-6">
+            <Reveal key={line} delay={i * 70}>
+              <div className="magnetic-card h-full border-t border-bone-300 pt-6">
               <p className="eyebrow text-terra-600">0{i + 1}</p>
               <p className="mt-5 font-display text-xl leading-snug text-night-900">
                 {line}
               </p>
-            </div>
+              </div>
+            </Reveal>
           ))}
         </div>
       </Section>
@@ -38,8 +43,10 @@ export default function Vision() {
         />
 
         <div className="mt-16 space-y-16">
-          {convictions.map((c) => (
-            <article key={c.number} className="grid gap-10 border-t border-bone-200 pt-10 lg:grid-cols-12">
+          <Reveal direction="right"><ImageFrame slot={imageSlots.detail} aspect="wide" className="max-w-3xl ml-auto" /></Reveal>
+          {convictions.map((c, i) => (
+            <Reveal key={c.number} delay={i * 50}>
+              <article className="grid gap-10 border-t border-bone-200 pt-10 lg:grid-cols-12">
               <div className="lg:col-span-5">
                 <p className="font-display text-6xl leading-none text-bone-300">
                   {c.number}
@@ -79,7 +86,8 @@ export default function Vision() {
                   </p>
                 </div>
               </div>
-            </article>
+              </article>
+            </Reveal>
           ))}
         </div>
       </Section>

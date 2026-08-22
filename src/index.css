@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Paleta de marca — azul noche profundo, verde petróleo suave, terracota suave */
+  /* Paleta Irene — azul noche, verde petróleo y granate editorial */
   --color-night-950: #0a1420;
   --color-night-900: #0e1b2a;
   --color-night-800: #16283c;
@@ -12,9 +12,12 @@
   --color-petrol-500: #3d817e;
   --color-petrol-100: #dfeae8;
 
-  --color-terra-600: #b26550;
-  --color-terra-500: #c47a63;
-  --color-terra-100: #f3e2db;
+  --color-terra-900: #4d2734;
+  --color-terra-800: #5d303f;
+  --color-terra-700: #673646;
+  --color-terra-600: #733d4e;
+  --color-terra-500: #824a5b;
+  --color-terra-100: #f0e3e7;
 
   --color-bone-50: #fbf9f6;
   --color-bone-100: #f5f1ea;
@@ -56,7 +59,8 @@
   }
 
   ::selection {
-    background-color: var(--color-petrol-100);
+    background-color: var(--color-terra-100);
+    color: var(--color-night-900);
   }
 
   :focus-visible {
@@ -71,4 +75,139 @@
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+}
+
+
+@layer components {
+  .site-grid {
+    background-image: linear-gradient(to right, rgba(14, 27, 42, 0.045) 1px, transparent 1px);
+    background-size: min(8vw, 120px) 100%;
+  }
+
+  .editorial-rule {
+    position: relative;
+  }
+
+  .editorial-rule::after {
+    content: '';
+    display: block;
+    width: 72px;
+    height: 2px;
+    margin-top: 18px;
+    background: var(--color-terra-600);
+    transform-origin: left;
+    transform: scaleX(0.7);
+    transition: transform 500ms ease;
+  }
+
+  .editorial-rule:hover::after {
+    transform: scaleX(1);
+  }
+
+  .reveal {
+    opacity: 0;
+    transition: opacity 700ms ease, transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+
+  .reveal-up { transform: translateY(28px); }
+  .reveal-left { transform: translateX(-28px); }
+  .reveal-right { transform: translateX(28px); }
+  .reveal-fade { transform: none; }
+  .reveal.is-visible { opacity: 1; transform: none; }
+
+  .image-frame {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-night-800);
+    isolation: isolate;
+  }
+
+  .image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(0.72) contrast(0.98);
+    transform: scale(1.01);
+    transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1), filter 500ms ease;
+  }
+
+  .image-frame:hover .image-frame__caption { opacity: 1; transform: none; }
+
+  .image-frame:hover img {
+    transform: scale(1.045);
+    filter: saturate(0.9) contrast(1);
+  }
+
+  .image-frame__veil {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(10,20,32,0.04) 45%, rgba(10,20,32,0.62) 100%);
+    pointer-events: none;
+  }
+
+  .image-frame__caption {
+    position: absolute;
+    right: 14px;
+    bottom: 12px;
+    left: 14px;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    color: rgba(251,249,246,0.78);
+    font-size: 9px;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: opacity 300ms ease, transform 300ms ease;
+    line-height: 1.35;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .magnetic-card {
+    transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 350ms ease, background-color 250ms ease;
+  }
+
+  .magnetic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 42px rgba(10,20,32,0.08);
+  }
+
+  .number-mark {
+    font-variant-numeric: tabular-nums;
+    transition: color 300ms ease, transform 300ms ease;
+  }
+
+  .group:hover .number-mark {
+    color: var(--color-terra-600);
+    transform: translateX(3px);
+  }
+
+  .grain {
+    position: relative;
+  }
+
+  .grain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.055;
+    mix-blend-mode: soft-light;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1; transform: none; }
 }

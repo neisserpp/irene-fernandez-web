@@ -1,3 +1,6 @@
+import Reveal from '../components/Reveal'
+import ImageFrame from '../components/ImageFrame'
+import { imageSlots } from '../content/images'
 import {
   ArrowRight,
   ButtonLink,
@@ -23,7 +26,8 @@ export default function Experiencia() {
         />
         <ol className="mt-14 grid gap-px bg-bone-200 md:grid-cols-2 lg:grid-cols-3">
           {trajectory.map((step, i) => (
-            <li key={step.title} className="bg-bone-50 p-8">
+            <Reveal key={step.title} delay={i * 55}>
+              <li className="group magnetic-card h-full bg-bone-50 p-8">
               <p className="eyebrow text-terra-600">
                 {String(i + 1).padStart(2, '0')}
               </p>
@@ -31,13 +35,14 @@ export default function Experiencia() {
               <p className="mt-3 text-sm leading-relaxed text-ink-700">
                 {step.description}
               </p>
-            </li>
+              </li>
+            </Reveal>
           ))}
         </ol>
       </Section>
 
       <Section tone="night">
-        <div className="grid gap-12 lg:grid-cols-12">
+        <div className="grid items-center gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <SectionHeading
               eyebrow="Qué he aprendido"
@@ -45,7 +50,11 @@ export default function Experiencia() {
               title="Más importante que enumerar puestos"
             />
           </div>
-          <ul className="divide-y divide-white/10 border-t border-white/10 lg:col-span-7">
+          <div className="lg:col-span-7">
+            <Reveal direction="right">
+              <ImageFrame slot={imageSlots.meeting} aspect="landscape" className="mb-8 max-w-xl ml-auto" />
+            </Reveal>
+            <ul className="divide-y divide-white/10 border-t border-white/10">
             {learnings.map((item) => (
               <li key={item} className="flex gap-5 py-6">
                 <span aria-hidden className="mt-3 h-px w-8 shrink-0 bg-terra-500" />
@@ -54,7 +63,8 @@ export default function Experiencia() {
                 </p>
               </li>
             ))}
-          </ul>
+            </ul>
+          </div>
         </div>
       </Section>
 
@@ -66,7 +76,8 @@ export default function Experiencia() {
         />
         <div className="mt-14 space-y-px bg-bone-300">
           {cases.map((item, i) => (
-            <article key={item.title} className="bg-bone-100 p-8 md:p-10">
+            <Reveal key={item.title} delay={i * 50}>
+              <article className="magnetic-card bg-bone-100 p-8 md:p-10">
               <div className="grid gap-8 lg:grid-cols-12">
                 <div className="lg:col-span-4">
                   <p className="eyebrow text-petrol-600">Caso 0{i + 1}</p>
@@ -88,7 +99,8 @@ export default function Experiencia() {
                   ))}
                 </dl>
               </div>
-            </article>
+              </article>
+            </Reveal>
           ))}
         </div>
       </Section>

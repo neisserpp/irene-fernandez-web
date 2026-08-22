@@ -1,3 +1,6 @@
+import Reveal from '../components/Reveal'
+import ImageFrame from '../components/ImageFrame'
+import { imageSlots } from '../content/images'
 import {
   ArrowRight,
   ButtonLink,
@@ -24,13 +27,21 @@ export default function Participaciones() {
       />
 
       <Section>
+        <div className="mb-14 grid items-end gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-7"><SectionHeading
+          eyebrow="Cómo se materializa"
+          title="Una presencia pública que también construye autoridad"
+          intro="Conferencias, conversaciones y consejos donde la experiencia de Irene se convierte en criterio útil para otros equipos directivos."
+        /></div>
+          <Reveal direction="right" className="lg:col-span-5"><ImageFrame slot={imageSlots.speaking} aspect="landscape" /></Reveal>
+        </div>
         <SectionHeading
           eyebrow="Ámbitos de contribución"
           title="Tres formas de aportar, con distinto nivel de implicación"
         />
 
         <div className="mt-14 grid gap-px bg-bone-200 lg:grid-cols-3">
-          <article className="bg-bone-50 p-8 md:p-10">
+          <Reveal><article className="bg-bone-50 p-8 md:p-10">
             <p className="eyebrow text-terra-600">01</p>
             <h3 className="mt-5 text-2xl leading-snug">Consejos y comités asesores</h3>
             <p className="mt-4 text-sm leading-relaxed text-ink-700">
@@ -45,9 +56,9 @@ export default function Participaciones() {
                 </li>
               ))}
             </ul>
-          </article>
+          </article></Reveal>
 
-          <article className="bg-bone-50 p-8 md:p-10">
+          <Reveal delay={70}><article className="bg-bone-50 p-8 md:p-10">
             <p className="eyebrow text-terra-600">02</p>
             <h3 className="mt-5 text-2xl leading-snug">
               Conferencias y conversaciones ejecutivas
@@ -64,9 +75,9 @@ export default function Participaciones() {
                 </li>
               ))}
             </ul>
-          </article>
+          </article></Reveal>
 
-          <article className="bg-bone-50 p-8 md:p-10">
+          <Reveal delay={70}><article className="bg-bone-50 p-8 md:p-10">
             <p className="eyebrow text-terra-600">03</p>
             <h3 className="mt-5 text-2xl leading-snug">Advisory estratégico</h3>
             <p className="mt-4 text-sm leading-relaxed text-ink-700">
@@ -81,7 +92,7 @@ export default function Participaciones() {
                 </li>
               ))}
             </ul>
-          </article>
+          </article></Reveal>
         </div>
       </Section>
 

@@ -1,3 +1,6 @@
+import Reveal from '../components/Reveal'
+import ImageFrame from '../components/ImageFrame'
+import { imageSlots } from '../content/images'
 import {
   ArrowRight,
   ButtonLink,
@@ -45,10 +48,12 @@ export default function SobreMi() {
       />
 
       <Section>
-        <div className="space-y-14">
-          {blocks.map((block) => (
+        <div className="grid items-start gap-12 lg:grid-cols-12">
+          <Reveal direction="left" className="lg:col-span-4 lg:sticky lg:top-28"><ImageFrame slot={imageSlots.portrait} aspect="portrait" /></Reveal>
+          <div className="space-y-14 lg:col-span-8">
+          {blocks.map((block, i) => (
+            <Reveal key={block.number} delay={i * 50}>
             <article
-              key={block.number}
               className="grid gap-8 border-t border-bone-200 pt-10 lg:grid-cols-12"
             >
               <div className="lg:col-span-4">
@@ -61,7 +66,9 @@ export default function SobreMi() {
                 {block.text}
               </p>
             </article>
+            </Reveal>
           ))}
+          </div>
         </div>
       </Section>
 
