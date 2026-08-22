@@ -1,4 +1,3 @@
-import type { CSSProperties } from 'react'
 import type { imageSlots } from '../content/images'
 
 type ImageSlot = (typeof imageSlots)[keyof typeof imageSlots]
@@ -11,12 +10,17 @@ type ImageFrameProps = {
   overlay?: boolean
 }
 
+/**
+ * Marco editorial para fotografías.
+ *
+ * Mientras no estén cargadas las fotografías reales, no se muestran imágenes
+ * externas ni fotos de stock: se mantiene un placeholder de marca con la ruta
+ * local definitiva para facilitar la sustitución posterior.
+ */
 export default function ImageFrame({
   slot,
   className = '',
-  priority = false,
   aspect = 'portrait',
-  overlay = true,
 }: ImageFrameProps) {
   const ratio =
     aspect === 'landscape'
@@ -25,22 +29,30 @@ export default function ImageFrame({
         ? 'aspect-[16/9]'
         : 'aspect-[4/5]'
 
-  const style: CSSProperties = { '--image-url': `url("${slot.src}")` } as CSSProperties
-
   return (
-    <figure className={`image-frame ${ratio} ${className}`} style={style}>
-      <img
-        src={slot.src}
-        alt={slot.alt}
-        loading={priority ? 'eager' : 'lazy'}
-        fetchPriority={priority ? 'high' : 'auto'}
-        decoding="async"
-      />
-      {overlay ? <span aria-hidden className="image-frame__veil" /> : null}
-      <figcaption className="image-frame__caption">
-        <span>Imagen provisional</span>
-        <span>{slot.local}</span>
-      </figcaption>
+    <figure className={`image-frame ${ratio} ${className}`}>
+      {slot.src ? (
+        <img
+          src={slot.src}
+          alt={slot.alt}
+          loading="lazy"
+          decoding="async"
+        />
+      ) : (
+        <div className="image-placeholder" aria-label={`Espacio reservado para ${slot.purpose}`}>
+          <span aria-hidden className="image-placeholder__shape image-placeholder__shape--one" />
+          <span aria-hidden className="image-placeholder__shape image-placeholder__shape--two" />
+          <div className="image-placeholder__content">
+            <span className="eyebrow text-bone-100">Fotografía de Irene</span>
+            <span className="mt-3 block max-w-[220px] font-display text-xl leading-tight text-bone-50">
+              {slot.purpose}
+            </span>
+            <span className="mt-5 block border-t border-white/15 pt-3 text-[9px] font-bold tracking-[0.14em] text-bone-300 uppercase">
+              {slot.local}
+            </span>
+          </div>
+        </div>
+      )}
     </figure>
   )
 }

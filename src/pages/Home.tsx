@@ -25,7 +25,7 @@ import {
 function Hero() {
   return (
     <section className="grain relative overflow-hidden bg-night-900 pt-32 pb-16 text-bone-100 md:pt-40 md:pb-24 lg:pt-44 lg:pb-28">
-      <div aria-hidden className="absolute inset-0 bg-[radial-gradient(circle_at_82%_28%,rgba(47,107,106,0.2),transparent_34%),radial-gradient(circle_at_8%_80%,rgba(115,61,78,0.18),transparent_30%)]" />
+      <div aria-hidden className="absolute inset-0 bg-[radial-gradient(circle_at_82%_28%,rgba(31,79,70,0.22),transparent_34%),radial-gradient(circle_at_8%_80%,rgba(115,61,78,0.20),transparent_30%)]" />
       <div aria-hidden className="absolute right-0 top-0 hidden h-full w-[35%] border-l border-white/10 lg:block" />
       <Container className="relative">
         <div className="grid items-end gap-12 lg:grid-cols-12 lg:gap-10">

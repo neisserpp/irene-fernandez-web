@@ -2,31 +2,31 @@
 
 @theme {
   /* Paleta Irene — azul noche, verde petróleo y granate editorial */
-  --color-night-950: #0a1420;
-  --color-night-900: #0e1b2a;
-  --color-night-800: #16283c;
-  --color-night-700: #22394f;
+  --color-night-950: #091421;
+  --color-night-900: #0f1c2e;
+  --color-night-800: #17263a;
+  --color-night-700: #24384d;
 
-  --color-petrol-700: #245c5b;
-  --color-petrol-600: #2f6b6a;
-  --color-petrol-500: #3d817e;
-  --color-petrol-100: #dfeae8;
+  --color-petrol-700: #174038;
+  --color-petrol-600: #1f4f46;
+  --color-petrol-500: #2c665b;
+  --color-petrol-100: #dce9e5;
 
-  --color-terra-900: #4d2734;
-  --color-terra-800: #5d303f;
-  --color-terra-700: #673646;
+  --color-terra-900: #542c3b;
+  --color-terra-800: #633446;
+  --color-terra-700: #6d394a;
   --color-terra-600: #733d4e;
-  --color-terra-500: #824a5b;
-  --color-terra-100: #f0e3e7;
+  --color-terra-500: #8a5061;
+  --color-terra-100: #eadcdf;
 
-  --color-bone-50: #fbf9f6;
-  --color-bone-100: #f5f1ea;
-  --color-bone-200: #e9e3d9;
-  --color-bone-300: #d8d0c3;
+  --color-bone-50: #f5f5f3;
+  --color-bone-100: #efefec;
+  --color-bone-200: #e2e3df;
+  --color-bone-300: #cfd1cd;
 
-  --color-ink-900: #16202b;
-  --color-ink-700: #38434f;
-  --color-ink-500: #64707c;
+  --color-ink-900: #18232f;
+  --color-ink-700: #3f4b57;
+  --color-ink-500: #69747e;
 
   --font-display: 'Playfair Display', ui-serif, Georgia, serif;
   --font-sans: 'Lato', ui-sans-serif, system-ui, sans-serif;
@@ -80,7 +80,7 @@
 
 @layer components {
   .site-grid {
-    background-image: linear-gradient(to right, rgba(14, 27, 42, 0.045) 1px, transparent 1px);
+    background-image: linear-gradient(to right, rgba(15, 28, 46, 0.055) 1px, transparent 1px);
     background-size: min(8vw, 120px) 100%;
   }
 
@@ -123,6 +123,51 @@
     isolation: isolate;
   }
 
+  .image-placeholder {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background: var(--color-night-900);
+  }
+
+  .image-placeholder::after {
+    content: '';
+    position: absolute;
+    inset: 14px;
+    border: 1px solid rgba(245, 245, 243, 0.18);
+    pointer-events: none;
+  }
+
+  .image-placeholder__content {
+    position: absolute;
+    inset: auto 28px 28px;
+    z-index: 3;
+  }
+
+  .image-placeholder__shape {
+    position: absolute;
+    display: block;
+    background: var(--color-terra-600);
+    opacity: 0.95;
+  }
+
+  .image-placeholder__shape--one {
+    width: 58%;
+    height: 78%;
+    right: -9%;
+    top: -18%;
+    transform: rotate(12deg);
+  }
+
+  .image-placeholder__shape--two {
+    width: 44%;
+    height: 62%;
+    left: -18%;
+    bottom: -26%;
+    background: var(--color-petrol-600);
+    transform: rotate(-16deg);
+  }
+
   .image-frame img {
     width: 100%;
     height: 100%;
@@ -144,7 +189,7 @@
     position: absolute;
     inset: 0;
     z-index: 1;
-    background: linear-gradient(180deg, rgba(10,20,32,0.04) 45%, rgba(10,20,32,0.62) 100%);
+    background: linear-gradient(180deg, rgba(15,28,46,0.04) 45%, rgba(15,28,46,0.62) 100%);
     pointer-events: none;
   }
 
@@ -173,7 +218,7 @@
 
   .magnetic-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 18px 42px rgba(10,20,32,0.08);
+    box-shadow: 0 18px 42px rgba(15,28,46,0.10);
   }
 
   .number-mark {
