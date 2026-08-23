@@ -170,7 +170,7 @@ function Footer() {
         <div className="mt-16 flex flex-col gap-4 border-t border-white/10 pt-8 text-xs md:flex-row md:items-center md:justify-between">
           <p>© {new Date().getFullYear()} Irene Fernández. Todos los derechos reservados.</p>
           <div className="flex flex-wrap gap-6">
-            <a href={site.linkedin} target="_blank" rel="noreferrer" className="hover:text-bone-100">
+            <a href="https://www.linkedin.com/in/irenefernandezprados/" target="_blank" rel="noreferrer" className="hover:text-bone-100">
               LinkedIn
             </a>
             <a href={site.essensup} target="_blank" rel="noreferrer" className="hover:text-bone-100">
