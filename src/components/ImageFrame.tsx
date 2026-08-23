@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import type { imageSlots } from '../content/images'
 
 type ImageSlot = (typeof imageSlots)[keyof typeof imageSlots]
@@ -13,15 +14,20 @@ type ImageFrameProps = {
 /**
  * Marco editorial para fotografías.
  *
- * Mientras no estén cargadas las fotografías reales, no se muestran imágenes
- * externas ni fotos de stock: se mantiene un placeholder de marca con la ruta
- * local definitiva para facilitar la sustitución posterior.
+ * Cada slot tiene una ruta local definitiva dentro de /public/images/irene/.
+ * Si la fotografía existe, se muestra automáticamente; si todavía no existe
+ * o el archivo tiene un nombre/formato incorrecto, se mantiene el placeholder
+ * de marca en lugar de mostrar una imagen rota.
  */
 export default function ImageFrame({
   slot,
   className = '',
+  priority = false,
   aspect = 'portrait',
+  overlay = false,
 }: ImageFrameProps) {
+  const [imageError, setImageError] = useState(false)
+
   const ratio =
     aspect === 'landscape'
       ? 'aspect-[4/3]'
@@ -29,15 +35,25 @@ export default function ImageFrame({
         ? 'aspect-[16/9]'
         : 'aspect-[4/5]'
 
+  // `src` permite sobrescribir la ruta local en el futuro; por defecto usamos
+  // siempre la ubicación preparada en /public/images/irene/.
+  const imageSrc = slot.src || slot.local
+  const showImage = Boolean(imageSrc) && !imageError
+
   return (
     <figure className={`image-frame ${ratio} ${className}`}>
-      {slot.src ? (
-        <img
-          src={slot.src}
-          alt={slot.alt}
-          loading="lazy"
-          decoding="async"
-        />
+      {showImage ? (
+        <>
+          <img
+            src={imageSrc}
+            alt={slot.alt}
+            loading={priority ? 'eager' : 'lazy'}
+            fetchPriority={priority ? 'high' : 'auto'}
+            decoding="async"
+            onError={() => setImageError(true)}
+          />
+          {overlay && <span className="image-frame__veil" aria-hidden="true" />}
+        </>
       ) : (
         <div className="image-placeholder" aria-label={`Espacio reservado para ${slot.purpose}`}>
           <span aria-hidden className="image-placeholder__shape image-placeholder__shape--one" />
