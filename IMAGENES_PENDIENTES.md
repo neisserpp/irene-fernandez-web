@@ -1,4 +1,4 @@
-# Imágenes pendientes — Irene Fernández
+# Imágenes pendientes — Irene Fernández Prados
 
 Las imágenes de stock/provisionales se han eliminado de la web. No hay ninguna URL externa de Unsplash en el proyecto.
 
