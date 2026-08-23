@@ -40,7 +40,7 @@ function Header() {
       <Container className="flex h-20 items-center justify-between">
         <Link to="/" className={`group flex items-center gap-3 ${solid ? 'text-night-900' : 'text-bone-100'}`}>
           <span className={`grid h-9 w-9 place-items-center border text-xs font-bold tracking-[0.08em] transition-colors ${solid ? 'border-terra-600 text-terra-600 group-hover:bg-terra-600 group-hover:text-bone-50' : 'border-bone-100/50 text-bone-100 group-hover:border-terra-500 group-hover:text-terra-500'}`}>IF</span>
-          <span className="hidden font-display text-lg tracking-tight sm:block md:text-xl">Irene Fernández</span>
+          <span className="hidden font-display text-lg tracking-tight sm:block md:text-xl">Irene Fernández Prados</span>
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex">
@@ -123,7 +123,7 @@ function Footer() {
           <div className="md:col-span-5">
             <div className="flex items-center gap-3">
               <span className="grid h-10 w-10 place-items-center border border-terra-600 text-xs font-bold tracking-[0.08em] text-terra-500">IF</span>
-              <p className="font-display text-2xl text-bone-100">Irene Fernández</p>
+              <p className="font-display text-2xl text-bone-100">Irene Fernández Prados</p>
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed">{site.credential}</p>
             <a
@@ -168,7 +168,7 @@ function Footer() {
         </div>
 
         <div className="mt-16 flex flex-col gap-4 border-t border-white/10 pt-8 text-xs md:flex-row md:items-center md:justify-between">
-          <p>© {new Date().getFullYear()} Irene Fernández. Todos los derechos reservados.</p>
+          <p>© {new Date().getFullYear()} Irene Fernández Prados. Todos los derechos reservados.</p>
           <div className="flex flex-wrap gap-6">
             <a href="https://www.linkedin.com/in/irenefernandezprados/" target="_blank" rel="noreferrer" className="hover:text-bone-100">
               LinkedIn

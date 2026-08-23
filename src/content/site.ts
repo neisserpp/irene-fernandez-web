@@ -4,14 +4,14 @@
  */
 
 export const site = {
-  name: 'Irene Fernández',
+  name: 'Irene Fernández Prados',
   role: 'CEO de EssensUp',
   tagline:
-    'Irene Fernández ayuda a las empresas a transformar tecnología, organizaciones y talento para convertir el cambio en resultados reales.',
+    'Irene Fernández Prados ayuda a las empresas a transformar tecnología, organizaciones y talento para convertir el cambio en resultados reales.',
   credential:
     'CEO de EssensUp, ingeniera informática y ejecutiva con más de 17 años de experiencia en transformación digital y SAP.',
   email: 'hola@irenefernandez.com',
-  linkedin: 'https://www.linkedin.com/',
+  linkedin: 'https://www.linkedin.com/in/irenefernandezprados/',
   essensup: 'https://www.essensup.com',
   newsletter: {
     name: 'Notas estratégicas sobre transformación SAP',
@@ -32,7 +32,7 @@ export const nav = [
 export const hero = {
   headline: 'Transformar una empresa no consiste solo en implantar tecnología.',
   subtitle:
-    'Soy Irene Fernández, CEO de EssensUp. Ayudo a organizaciones y equipos directivos a convertir la transformación tecnológica en mejores procesos, más talento y resultados sostenibles.',
+    'Soy Irene Fernández Prados, CEO de EssensUp. Ayudo a organizaciones y equipos directivos a convertir la transformación tecnológica en mejores procesos, más talento y resultados sostenibles.',
   primary: { label: 'Conocer mi visión', to: '/vision' },
   secondary: { label: 'Invitarme a participar', to: '/contacto?motivo=evento' },
 }
