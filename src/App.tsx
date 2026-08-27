@@ -9,6 +9,7 @@ import Participaciones from './pages/Participaciones'
 import SobreMi from './pages/SobreMi'
 import Contacto from './pages/Contacto'
 import NotFound from './pages/NotFound'
+import SeoManager from './seo'
 
 function ScrollManager() {
   const { pathname, hash } = useLocation()
@@ -31,6 +32,7 @@ export default function App() {
   return (
     <Layout>
       <ScrollManager />
+      <SeoManager />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/vision" element={<Vision />} />
