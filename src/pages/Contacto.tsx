@@ -59,7 +59,8 @@ export default function Contacto() {
                 cómodo, escríbeme directamente a{" "}
                 <a
                   href={`mailto:${site.email}`}
-                  className="border-b border-terra-500 pb-0.5 text-bone-100 hover:text-terra-500"
+                  className="break-words border-b border-terra-500 pb-0.5 text-bone-100 hover:text-terra-500"
+                  style={{ overflowWrap: "anywhere" }}
                 >
                   {site.email}
                 </a>
@@ -196,7 +197,8 @@ export default function Contacto() {
               <p className="eyebrow text-petrol-500">Contacto directo</p>
               <a
                 href={`mailto:${site.email}`}
-                className="mt-5 block font-display text-2xl font-semibold hover:text-terra-500"
+                className="mt-5 block max-w-full break-words font-display text-xl font-semibold leading-snug hover:text-terra-500 sm:text-2xl"
+                style={{ overflowWrap: "anywhere" }}
               >
                 {site.email}
               </a>

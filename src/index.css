@@ -167,8 +167,19 @@
   }
 
   /* Estado activo del navbar: sombra suave según la página actual. */
+  .nav-link {
+    text-shadow: 0 0 0 transparent;
+  }
+
+  /* El texto permanece siempre legible; el estado activo se expresa con sombra y subrayado,
+     sin cambiar ni ocultar el título de la página. */
   .nav-link-active {
-    text-shadow: 0 0 18px color-mix(in srgb, var(--color-terra-500) 28%, transparent);
+    text-shadow: 0 0 16px color-mix(in srgb, var(--color-terra-500) 34%, transparent);
+  }
+
+  .nav-link:hover,
+  .nav-link:focus-visible {
+    text-shadow: 0 0 16px color-mix(in srgb, var(--color-terra-500) 30%, transparent);
   }
 
   .nav-link-active::after {
