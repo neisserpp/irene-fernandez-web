@@ -108,7 +108,7 @@ export default function SeoManager() {
     document.title = title;
 
     upsertMeta("name", "description", description);
-    upsertMeta("name", "robots", isIndexable ? "index, follow" : "noindex, follow");
+    upsertMeta("name", "robots", isIndexable ? "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" : "noindex, follow");
     upsertMeta("name", "author", site.name);
     upsertMeta("name", "theme-color", "#0e1b2a");
 
@@ -150,6 +150,7 @@ export default function SeoManager() {
         jobTitle: "CEO de EssensUp",
         description: site.credential,
         url: BASE_URL,
+        image: `${BASE_URL}/images/irene/irene-hero.webp`,
         sameAs: [site.linkedin],
         worksFor: {
           "@type": "Organization",
@@ -176,6 +177,10 @@ export default function SeoManager() {
         inLanguage: "es-ES",
         isPartOf: { "@id": websiteId },
         about: { "@id": personId },
+        primaryImageOfPage: {
+          "@type": "ImageObject",
+          url: `${BASE_URL}/images/irene/irene-hero.webp`,
+        },
         ...(pathname === "/" ? { mainEntity: { "@id": personId } } : {}),
       },
     ];
