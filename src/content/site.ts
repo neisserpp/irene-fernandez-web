@@ -84,7 +84,7 @@ export const manifesto = [
 
 export const workAreas = [
   {
-    number: '01',
+    figure: '01',
     title: 'Transformación y tecnología',
     description:
       'Decisiones sobre ERP, SAP, digitalización, adopción y evolución operativa.',
