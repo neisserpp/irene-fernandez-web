@@ -1,6 +1,6 @@
-import Reveal from '../components/Reveal'
-import ImageFrame from '../components/ImageFrame'
-import { imageSlots } from '../content/images'
+import Reveal from "../components/Reveal";
+import ImageFrame from "../components/ImageFrame";
+import { imageSlots } from "../content/images";
 import {
   ArrowRight,
   ButtonLink,
@@ -8,8 +8,8 @@ import {
   Quote,
   Section,
   SectionHeading,
-} from '../components/ui'
-import { convictions, manifesto, workAreas } from '../content/site'
+} from "../components/ui";
+import { convictions, manifesto, workAreas } from "../content/site";
 
 export default function Vision() {
   return (
@@ -24,11 +24,11 @@ export default function Vision() {
         <div className="grid gap-10 md:grid-cols-3">
           {manifesto.map((line, i) => (
             <Reveal key={line} delay={i * 70}>
-              <div className="magnetic-card h-full border-t border-bone-300 pt-6">
-              <p className="eyebrow text-terra-600">0{i + 1}</p>
-              <p className="mt-5 font-display text-xl leading-snug text-night-900">
-                {line}
-              </p>
+              <div className="magnetic-card h-full rounded-[20px] border border-bone-300/70 bg-bone-50 p-7">
+                <p className="eyebrow text-terra-600">0{i + 1}</p>
+                <p className="mt-5 font-display text-xl leading-snug font-semibold text-night-900">
+                  {line}
+                </p>
               </div>
             </Reveal>
           ))}
@@ -43,56 +43,48 @@ export default function Vision() {
         />
 
         <div className="mt-16 space-y-16">
-          <Reveal direction="right"><ImageFrame slot={imageSlots.detail} aspect="wide" className="max-w-3xl ml-auto" /></Reveal>
+          <Reveal direction="right">
+            <ImageFrame slot={imageSlots.detail} aspect="wide" className="ml-auto max-w-3xl" />
+          </Reveal>
           {convictions.map((c, i) => (
             <Reveal key={c.number} delay={i * 50}>
               <article className="grid gap-10 border-t border-bone-200 pt-10 lg:grid-cols-12">
-              <div className="lg:col-span-5">
-                <p className="font-display text-6xl leading-none text-bone-300">
-                  {c.number}
-                </p>
-                <h3 className="mt-6 text-2xl leading-snug md:text-[1.75rem]">
-                  {c.title}
-                </h3>
-              </div>
+                <div className="lg:col-span-5">
+                  <p className="font-display text-6xl leading-none text-bone-300">
+                    {c.number}
+                  </p>
+                  <h3 className="mt-6 text-2xl leading-snug md:text-[1.75rem]">{c.title}</h3>
+                </div>
 
-              <div className="space-y-8 lg:col-span-7">
-                <div>
-                  <p className="eyebrow text-petrol-600">Mi posición</p>
-                  <p className="mt-3 text-lg leading-relaxed text-ink-900">
-                    {c.position}
-                  </p>
-                </div>
-                <div className="grid gap-8 sm:grid-cols-2">
+                <div className="space-y-8 lg:col-span-7">
                   <div>
-                    <p className="eyebrow text-terra-600">Qué he observado</p>
-                    <p className="mt-3 text-sm leading-relaxed text-ink-700">
-                      {c.observed}
-                    </p>
+                    <p className="eyebrow text-petrol-600">Mi posición</p>
+                    <p className="mt-3 text-lg leading-relaxed text-ink-900">{c.position}</p>
                   </div>
-                  <div>
-                    <p className="eyebrow text-terra-600">El error habitual</p>
-                    <p className="mt-3 text-sm leading-relaxed text-ink-700">
-                      {c.mistake}
+                  <div className="grid gap-8 sm:grid-cols-2">
+                    <div>
+                      <p className="eyebrow text-terra-600">Qué he observado</p>
+                      <p className="mt-3 text-sm leading-relaxed text-ink-700">{c.observed}</p>
+                    </div>
+                    <div>
+                      <p className="eyebrow text-terra-600">El error habitual</p>
+                      <p className="mt-3 text-sm leading-relaxed text-ink-700">{c.mistake}</p>
+                    </div>
+                  </div>
+                  <div className="rounded-r-[20px] border-l-4 border-petrol-500 bg-bone-100 p-6">
+                    <p className="eyebrow text-petrol-600">
+                      Qué debería hacer un equipo directivo
                     </p>
+                    <p className="mt-3 text-base leading-relaxed text-ink-900">{c.different}</p>
                   </div>
                 </div>
-                <div className="border-l border-petrol-500 bg-bone-100 p-6">
-                  <p className="eyebrow text-petrol-600">
-                    Qué debería hacer un equipo directivo
-                  </p>
-                  <p className="mt-3 text-base leading-relaxed text-ink-900">
-                    {c.different}
-                  </p>
-                </div>
-              </div>
               </article>
             </Reveal>
           ))}
         </div>
       </Section>
 
-      <Section tone="night">
+      <Section tone="night" className="grain wave-foot">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <SectionHeading
@@ -107,9 +99,7 @@ export default function Vision() {
               {workAreas.map((area) => (
                 <li key={area.title} className="py-7">
                   <div className="flex gap-6">
-                    <span className="eyebrow mt-1.5 text-petrol-500">
-                      {area.number}
-                    </span>
+                    <span className="eyebrow mt-1.5 text-petrol-500">{area.number}</span>
                     <div>
                       <h3 className="text-xl text-bone-100">{area.title}</h3>
                       <p className="mt-2 text-sm leading-relaxed text-bone-300">
@@ -127,8 +117,8 @@ export default function Vision() {
       <Section tone="bone">
         <div className="mx-auto max-w-3xl text-center">
           <Quote>
-            Las transformaciones importantes empiezan con una conversación honesta
-            sobre lo que debe cambiar.
+            Las transformaciones importantes empiezan con una conversación honesta sobre
+            lo que debe cambiar.
           </Quote>
           <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
             <ButtonLink to="/participaciones">
@@ -141,5 +131,5 @@ export default function Vision() {
         </div>
       </Section>
     </>
-  )
+  );
 }
