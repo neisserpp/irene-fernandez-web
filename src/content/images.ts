@@ -1,9 +1,9 @@
 /**
  * Banco de imágenes de Irene.
  *
- * Las fotografías reales se incorporarán más adelante.
- * Cada slot conserva la ruta local definitiva para que solo haya que
- * colocar el archivo correspondiente dentro de /public/images/irene/.
+ * Las fotografías reales son opcionales para el contenido editorial.
+ * Los slots conservan rutas locales definitivas para poder incorporar fotografías
+ * propias sin cambiar la estructura de los componentes.
  */
 export const imageSlots = {
   hero: {

@@ -3,51 +3,59 @@ import path from 'node:path'
 
 const DIST = path.resolve('dist')
 const BASE_URL = 'https://irenefernandezprados.com'
-const IMAGE = `${BASE_URL}/images/irene/irene-hero.webp`
 const OG_IMAGE = `${BASE_URL}/og-image.png`
+
+const site = {
+  name: 'Irene Fernández Prados',
+  tagline: 'Irene Fernández Prados ayuda a las empresas a transformar tecnología, organizaciones y talento para convertir el cambio en resultados reales.',
+  credential: 'CEO de EssensUp, ingeniera informática y ejecutiva con más de 17 años de experiencia en transformación digital y SAP.',
+  email: 'Irene.fernandez@essensup.com',
+  linkedin: 'https://www.linkedin.com/in/irenefernandezprados/',
+  essensup: 'https://www.essensup.com',
+}
 
 const pages = {
   '/': {
-    title: 'Irene Fernández Prados | CEO de EssensUp, SAP y transformación digital',
-    description: 'Irene Fernández Prados, CEO de EssensUp e ingeniera informática. Más de 17 años liderando transformación digital, SAP, liderazgo y estrategia empresarial.',
+    title: 'Irene Fernández Prados | CEO de EssensUp y SAP',
+    description: 'Irene Fernández Prados, CEO de EssensUp e ingeniera informática, especializada en SAP, transformación digital, liderazgo y estrategia empresarial.',
     eyebrow: 'Inicio',
     type: 'WebPage',
   },
   '/vision': {
-    title: 'Irene Fernández Prados | Visión sobre transformación digital, SAP y liderazgo',
-    description: 'Conoce la visión de Irene Fernández Prados sobre transformación digital, SAP, liderazgo, talento y las decisiones que hacen funcionar mejor una empresa.',
+    title: 'Irene Fernández Prados | Transformación digital y liderazgo',
+    description: 'La visión de Irene Fernández Prados sobre transformación digital, SAP, liderazgo, talento y las decisiones que convierten el cambio en resultados empresariales.',
     eyebrow: 'Visión',
     type: 'WebPage',
   },
   '/experiencia': {
-    title: 'Irene Fernández Prados | Experiencia en SAP, transformación digital y dirección',
-    description: 'Conoce la trayectoria de Irene Fernández Prados: más de 17 años en SAP y transformación digital, dirección de programas y creación de EssensUp.',
+    title: 'Irene Fernández Prados | Experiencia en SAP y dirección',
+    description: 'Trayectoria de Irene Fernández Prados en SAP y transformación digital: dirección de programas, proyectos internacionales y creación de EssensUp.',
     eyebrow: 'Experiencia',
     type: 'WebPage',
   },
   '/ideas': {
-    title: 'Irene Fernández Prados | Ideas sobre SAP, liderazgo y transformación empresarial',
-    description: 'Lee las ideas de Irene Fernández Prados sobre transformación SAP, liderazgo, talento, diversidad y estrategia empresarial desde proyectos reales.',
+    title: 'Irene Fernández Prados | Ideas sobre SAP y liderazgo',
+    description: 'Ideas y análisis de Irene Fernández Prados sobre SAP, transformación empresarial, liderazgo, talento y diversidad desde la experiencia profesional.',
     eyebrow: 'Ideas',
-    type: 'WebPage',
+    type: 'CollectionPage',
   },
   '/participaciones': {
-    title: 'Irene Fernández Prados | Participaciones, conferencias y advisory',
-    description: 'Conoce las conferencias, conversaciones ejecutivas, consejos y advisory en los que Irene Fernández Prados aporta experiencia en tecnología, SAP y liderazgo.',
+    title: 'Irene Fernández Prados | Conferencias y advisory',
+    description: 'Conferencias, conversaciones ejecutivas, consejos y advisory de Irene Fernández Prados sobre tecnología, SAP, transformación y liderazgo empresarial.',
     eyebrow: 'Participaciones',
-    type: 'WebPage',
+    type: 'CollectionPage',
   },
   '/sobre-mi': {
-    title: 'Irene Fernández Prados | Perfil profesional, liderazgo y trayectoria',
-    description: 'Conoce a Irene Fernández Prados, ingeniera informática, ejecutiva y CEO de EssensUp, y su enfoque sobre liderazgo, transformación y construcción de compañías.',
+    title: 'Irene Fernández Prados | Perfil profesional y trayectoria',
+    description: 'Perfil profesional de Irene Fernández Prados: ingeniera informática, CEO de EssensUp y ejecutiva especializada en transformación digital, SAP y liderazgo.',
     eyebrow: 'Sobre mí',
     type: 'ProfilePage',
   },
   '/contacto': {
-    title: 'Irene Fernández Prados | Contacto profesional y colaboraciones',
-    description: 'Contacta con Irene Fernández Prados para consejos, conferencias, colaboraciones, advisory o conversaciones sobre transformación digital y SAP.',
+    title: 'Irene Fernández Prados | Contacto profesional',
+    description: 'Contacta con Irene Fernández Prados para conferencias, consejos, colaboraciones, advisory y conversaciones sobre transformación digital y SAP.',
     eyebrow: 'Contacto',
-    type: 'WebPage',
+    type: 'ContactPage',
   },
 }
 
@@ -59,72 +67,73 @@ function graphFor(route, page) {
   const canonical = `${BASE_URL}${route === '/' ? '/' : route}`
   const personId = `${BASE_URL}/#person`
   const websiteId = `${BASE_URL}/#website`
+  const organizationId = `${BASE_URL}/#essensup`
 
-  const graph = [
-    {
-      '@type': 'WebSite',
-      '@id': websiteId,
-      url: `${BASE_URL}/`,
-      name: 'Irene Fernández Prados',
-      inLanguage: 'es-ES',
-      publisher: { '@id': personId },
-    },
-    {
-      '@type': 'Person',
-      '@id': personId,
-      name: 'Irene Fernández Prados',
-      url: `${BASE_URL}/`,
-      image: IMAGE,
-      jobTitle: 'CEO de EssensUp',
-      description: 'CEO de EssensUp, ingeniera informática y ejecutiva con más de 17 años de experiencia en transformación digital y SAP.',
-      sameAs: ['https://www.linkedin.com/in/irenefernandezprados/'],
-      worksFor: {
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebSite',
+        '@id': websiteId,
+        url: `${BASE_URL}/`,
+        name: site.name,
+        description: site.tagline,
+        inLanguage: 'es-ES',
+        publisher: { '@id': personId },
+      },
+      {
         '@type': 'Organization',
+        '@id': organizationId,
         name: 'EssensUp',
-        url: 'https://www.essensup.com',
+        url: site.essensup,
+        description: 'Consultora especializada en transformación digital y proyectos SAP.',
       },
-      knowsAbout: [
-        'Transformación digital',
-        'SAP',
-        'SAP S/4HANA',
-        'Liderazgo empresarial',
-        'Gestión del cambio',
-        'Talento tecnológico',
-        'Estrategia empresarial',
-        'Diversidad e inclusión',
-      ],
-    },
-    {
-      '@type': page.type,
-      '@id': `${canonical}#webpage`,
-      url: canonical,
-      name: page.title,
-      description: page.description,
-      inLanguage: 'es-ES',
-      isPartOf: { '@id': websiteId },
-      about: { '@id': personId },
-      primaryImageOfPage: {
-        '@type': 'ImageObject',
-        url: IMAGE,
+      {
+        '@type': 'Person',
+        '@id': personId,
+        name: site.name,
+        givenName: 'Irene',
+        familyName: 'Fernández Prados',
+        url: `${BASE_URL}/`,
+        jobTitle: 'CEO de EssensUp',
+        description: site.credential,
+        email: site.email,
+        sameAs: [site.linkedin],
+        worksFor: { '@id': organizationId },
+        knowsAbout: [
+          'Transformación digital',
+          'SAP',
+          'SAP S/4HANA',
+          'ERP',
+          'Liderazgo empresarial',
+          'Gestión del cambio',
+          'Talento tecnológico',
+          'Estrategia empresarial',
+          'Diversidad e inclusión',
+        ],
       },
-      ...(route === '/' || page.type === 'ProfilePage'
-        ? { mainEntity: { '@id': personId } }
-        : {}),
-    },
-  ]
-
-  if (route !== '/') {
-    graph.push({
-      '@type': 'BreadcrumbList',
-      '@id': `${canonical}#breadcrumb`,
-      itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${BASE_URL}/` },
-        { '@type': 'ListItem', position: 2, name: page.eyebrow, item: canonical },
-      ],
-    })
+      {
+        '@type': page.type,
+        '@id': `${canonical}#webpage`,
+        url: canonical,
+        name: page.title,
+        description: page.description,
+        inLanguage: 'es-ES',
+        isPartOf: { '@id': websiteId },
+        author: { '@id': personId },
+        about: { '@id': personId },
+        primaryImageOfPage: {
+          '@type': 'ImageObject',
+          url: OG_IMAGE,
+          width: 1200,
+          height: 630,
+        },
+        ...(route === '/' || page.type === 'ProfilePage'
+          ? { mainEntity: { '@id': personId } }
+          : {}),
+      },
+    ],
   }
-
-  return { '@context': 'https://schema.org', '@graph': graph }
 }
 
 function replaceMeta(html, attr, key, content) {
@@ -159,18 +168,26 @@ const baseHtml = fs.readFileSync(path.join(DIST, 'index.html'), 'utf8')
 
 for (const [route, page] of Object.entries(pages)) {
   const canonical = `${BASE_URL}${route === '/' ? '/' : route}`
+  const robots = 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
   let html = baseHtml
   html = replaceTitle(html, page.title)
   html = replaceMeta(html, 'name', 'description', page.description)
-  html = replaceMeta(html, 'name', 'robots', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1')
-  html = replaceMeta(html, 'name', 'author', 'Irene Fernández Prados')
+  html = replaceMeta(html, 'name', 'robots', robots)
+  html = replaceMeta(html, 'name', 'googlebot', robots)
+  html = replaceMeta(html, 'name', 'author', site.name)
   html = replaceMeta(html, 'property', 'og:title', page.title)
   html = replaceMeta(html, 'property', 'og:description', page.description)
   html = replaceMeta(html, 'property', 'og:type', 'website')
   html = replaceMeta(html, 'property', 'og:url', canonical)
-  html = replaceMeta(html, 'property', 'og:site_name', 'Irene Fernández Prados')
+  html = replaceMeta(html, 'property', 'og:locale', 'es_ES')
+  html = replaceMeta(html, 'property', 'og:site_name', site.name)
   html = replaceMeta(html, 'property', 'og:image', OG_IMAGE)
+  html = replaceMeta(html, 'property', 'og:image:secure_url', OG_IMAGE)
   html = replaceMeta(html, 'property', 'og:image:alt', `Irene Fernández Prados — ${page.eyebrow}`)
+  html = replaceMeta(html, 'property', 'og:image:type', 'image/png')
+  html = replaceMeta(html, 'property', 'og:image:width', '1200')
+  html = replaceMeta(html, 'property', 'og:image:height', '630')
+  html = replaceMeta(html, 'name', 'twitter:card', 'summary_large_image')
   html = replaceMeta(html, 'name', 'twitter:title', page.title)
   html = replaceMeta(html, 'name', 'twitter:description', page.description)
   html = replaceMeta(html, 'name', 'twitter:image', OG_IMAGE)
